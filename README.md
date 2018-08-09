@@ -70,6 +70,10 @@ with session('user', 'pass') as client:
     pprint(res.json())
 ```
 
+## Todo
+
+- [ ] Ensure original test cases work
+
 ## Original License
 
 Copyright (c) 2017 Clinton James
