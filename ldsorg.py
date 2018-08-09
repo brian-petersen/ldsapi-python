@@ -127,6 +127,18 @@ class Client:
 
         self.signed_in = True
 
+    def sign_out(self):
+        '''Signs out of the current session.
+
+        Side effects:
+            self.signed_out = False
+        '''
+        assert self.signed_in
+
+        self.get('signout-url')
+
+        self.signed_in = False
+
     def get(self, endpoint, *args, **kwargs):
         '''Get an HTTP response from endpoint a known endpoint.
 
@@ -169,7 +181,7 @@ def session(username=None, password=None):
     >>> with session('user', 'pass') as lds_client:
     ...     res = lds.get(....)
 
-    or 
+    or
 
     >>> with session() as lds_client:
     ...     lds_client.sign_in('user', 'pass')
@@ -179,7 +191,7 @@ def session(username=None, password=None):
     try:
         yield client
     finally:
-        client.get('signout-url')
+        client.sign_out()
 
 
 # This module can be used from the command line to collect and examine
