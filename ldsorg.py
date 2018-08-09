@@ -114,7 +114,6 @@ class Client:
         Side effects:
             self.signed_in = True
         '''
-
         assert self._endpoints is not None
 
         url = self._endpoints['auth-url']
@@ -148,7 +147,6 @@ class Client:
             Error for unknown endpoint
             KeyError for missing endpoint keyword arguments
         '''
-
         if endpoint not in self._endpoints:
             raise Error('Unknown endpoint', endpoint)
 
