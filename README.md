@@ -12,7 +12,7 @@ cd ldsorg-python
 python setup.py install
 ```
 
-## QuickStart
+## Quick Start
 
 The `ldsorg` module provides two nicities, a `Client` class and a `session` function. The following examples demonstrate their basic usage.
 
