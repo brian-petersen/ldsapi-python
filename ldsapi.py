@@ -139,6 +139,13 @@ class Client:
 
         self.signed_in = False
 
+    def close(self):
+        '''Sign out of lds.org and close underlying client.'''
+        if self.signed_in:
+            self.sign_out()
+
+        self._session.close()
+
     def get(self, endpoint, *args, **kwargs):
         '''Get an HTTP response from endpoint a known endpoint.
 
@@ -191,7 +198,7 @@ def session(username=None, password=None):
     try:
         yield client
     finally:
-        client.sign_out()
+        client.close()
 
 
 # This module can be used from the command line to collect and examine
