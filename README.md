@@ -1,4 +1,4 @@
-# ldsorg
+# ldsapi
 
 This project is a fork of [LDS-org](https://github.com/jidn/LDS-org). The motiviation for this project is the same: I am a ward clerk and needed a way to pull data from lds.org in an easy manner.
 
@@ -7,17 +7,17 @@ This project is a fork of [LDS-org](https://github.com/jidn/LDS-org). The motivi
 The easiest way for now is to clone the repo and install it manually:
 
 ```sh
-git clone git@github.com:brian-petersen/ldsorg-python.git
-cd ldsorg-python
+git clone git@github.com:brian-petersen/ldsapi-python.git
+cd ldsapi-python
 python setup.py install
 ```
 
 ## Quick Start
 
-The `ldsorg` module provides two nicities, a `Client` class and a `session` function. The following examples demonstrate their basic usage.
+The `ldsapi` module provides two nicities, a `Client` class and a `session` function. The following examples demonstrate their basic usage.
 
 ```python
-from ldsorg import Client
+from ldsapi import Client
 
 lds_client = Client
 lds_client.sign_in('user', 'pass')
@@ -30,7 +30,7 @@ lds_client.get('signout-url')
 ```
 
 ```python
-from ldsorg import session
+from ldsapi import session
 
 with session('user', 'pass') as lds_client:
     res = lds_client.get('current-user-id')
@@ -49,7 +49,7 @@ The following example shows how to get a list of available endpoints and their p
 
 ```python
 import pprint from pprint
-from ldsorg import session
+from ldsapi import session
 
 with session('user', 'pass') as client:
     pprint(client._endpoints)
@@ -61,7 +61,7 @@ The `photo-url` endpoint needs two arguments, an member ID and the type of photo
 
 ```python
 from pprint import pprint
-from ldsorg import session
+from ldsapi import session
 
 with session('user', 'pass') as client:
     my_id = lds.get('current-user-id').json()

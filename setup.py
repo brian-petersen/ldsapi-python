@@ -4,9 +4,9 @@ import os
 from setuptools import setup
 
 # Package meta-data.
-NAME = 'ldsorg'
+NAME = 'ldsapi'
 DESCRIPTION = 'Access LDS.org unit information'
-URL = 'https://github.com/brian-petersen/ldsorg-python'
+URL = 'https://github.com/brian-petersen/ldsapi-python'
 EMAIL = 'spambrianp@gmail.com'
 AUTHOR = 'Brian Petersen'
 REQUIRES_PYTHON = '>=3.7.0'
