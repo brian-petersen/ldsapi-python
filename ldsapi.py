@@ -43,7 +43,7 @@ class Client:
         '''
         self.signed_in = False
 
-        self._session = requests.Session()
+        self.session = requests.Session()
         self._endpoints: Optional[dict] = None
 
         self._retrieve_endpoints()
@@ -58,7 +58,7 @@ class Client:
 
         See https://tech.lds.org/wiki/LDS_Tools_Web_Services for details.
         '''
-        res = self._session.get(ENDPOINTS_URL)
+        res = self.session.get(ENDPOINTS_URL)
         assert res.status_code == 200
 
         self._endpoints = {}
@@ -97,7 +97,7 @@ class Client:
         '''
         assert self.signed_in
 
-        res = self._session.get(self._endpoints['current-user-unit'])
+        res = self.session.get(self._endpoints['current-user-unit'])
 
         return res.json()['message']
 
@@ -117,7 +117,7 @@ class Client:
         assert self._endpoints is not None
 
         url = self._endpoints['auth-url']
-        res = self._session.post(url, {
+        res = self.session.post(url, {
             'username': username,
             'password': password
         })
@@ -144,7 +144,7 @@ class Client:
         if self.signed_in:
             self.sign_out()
 
-        self._session.close()
+        self.session.close()
 
     def get(self, endpoint, *args, **kwargs):
         '''Get an HTTP response from endpoint a known endpoint.
@@ -174,7 +174,7 @@ class Client:
         url: str = self._endpoints[endpoint]
         url = url.format(*args, **kwargs)
 
-        return self._session.get(url)
+        return self.session.get(url)
 
 
 @contextmanager
